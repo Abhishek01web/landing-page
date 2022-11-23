@@ -1,0 +1,192 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cuprum:ital,wght@0,400;0,500;0,600;0,700;1,700&display=swap');
+
+$w: #fff;
+$wa: rgba(255, 255, 255, 0.09);
+$b: #000;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Playfair Display", serif;
+  font-family: 'Syne Mono', monospace;
+  font-family: 'Cuprum', sans-serif;
+}
+
+@mixin hw($h, $w) {
+  height: $h;
+  width: $w;
+}
+
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin gradient-text {
+  background-image: linear-gradient(
+    to right bottom,
+    #000000,
+    #440d2a,
+    #80005e,
+    #b600a5,
+    #dd00ff
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.container {
+  @include hw(100vh, 100%);
+  @include flex;
+  background: url("../public/images/landing-page-bg.png") no-repeat;
+  background-image: linear-gradient(
+    to right bottom,
+    #4d0059,
+    #6f007f,
+    #9200a8,
+    #b700d3,
+    #dd00ff
+  );
+  background-image: linear-gradient(
+    to right bottom,
+    #000000,
+    #440d2a,
+    #80005e,
+    #b600a5,
+    #dd00ff
+  );
+  background-image: linear-gradient(to right bottom, #000000, #47112c, #890561, #c800a7, #fe00ff);
+  background-size: 100% 100%;
+  .content,
+  .contact {
+    @include hw(100%, 50%);
+    @include flex;
+    flex-direction: column;
+  }
+  .content {
+    margin: 20px;
+    align-items: flex-start;
+    padding-left: 20px;
+    h2 {
+      color: $w;
+      text-transform: uppercase;
+    }
+    p {
+      width: 90%;
+      margin: 20px 0 20px 0;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: $w;
+      line-height: 1.5;
+      text-align: justify; /* For Edge */
+      -moz-text-align-last: justify; /* For Firefox prior 58.0 */
+       text-align-last: left;
+    }
+    a {
+      text-transform: uppercase;
+      text-decoration: none;
+      text-shadow: 4px 4px 5px $b;
+      color: $w;
+      background: $wa;
+      font-size: 18px;
+      font-weight: 600;
+      backdrop-filter: blur(10px);
+      box-shadow: inset 5px 5px 5px $b, 5px 5px 5px $b;
+      padding: 10px;
+      border: 1px solid $wa;
+      border-radius: 20px;
+      transition: all 0.2.5s linear;
+      &:hover {
+        text-shadow: 0px 0px 0px $b;
+        box-shadow: 0px 0px 5px $b;
+        background: none;
+        border-color: #fff;
+      }
+    }
+  }
+  .contact {
+    align-items: flex-start;
+    form {
+      width: 100%;
+      padding: 60px;
+      #heading {
+        color: $w;
+        margin-bottom: 10px;
+      }
+      input,
+      textarea,
+      button {
+        width: 80%;
+        margin: 0px 0 20px 0;
+        display: block;
+        color: $w;
+        background: $wa;
+        font-size: 18px;
+        font-weight: 400;
+        backdrop-filter: blur(2px);
+        box-shadow: inset 10px 10px 5px $b, 10px 10px 5px $b;
+        padding: 10px;
+        padding-left: 20px;
+        border: 1px solid $wa;
+        border-radius: 20px;
+        text-shadow: 4px 4px 5px $b;
+        transition: all 0.2.5s linear;
+        &::placeholder {
+          color: $w;
+          text-shadow: 1px 1px 5px $b;
+          font-weight: 600;
+          letter-spacing: 1px;
+        }
+        textarea {
+          box-shadow: inset 20px 20px 5px $b, 20px 20px 5px $b;
+        }
+      }
+      button {
+        @include hw(60px, 60px);
+        border-radius: 50%;
+        padding: 0;
+        color: $w;
+        font-size: 18px;
+        font-weight: 600;
+        text-shadow: 1px 1px 5px $b;
+        cursor: pointer;
+        &:hover {
+          text-shadow: 0px 0px 0px $b;
+          box-shadow: 0px 0px 5px $b;
+          background: none;
+          border-color: #fff;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .container {
+    @include hw(100%, 100%);
+    flex-direction: column;
+    .content {
+      @include hw(50%, 95%);
+    }
+    .contact {
+        width: 80%;
+      form {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        input,
+        textarea {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
